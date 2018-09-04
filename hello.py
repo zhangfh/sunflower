@@ -5,9 +5,11 @@ from flask import make_response
 from flask import redirect
 from flask import abort
 from flask_script import Manager
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 manager = Manager(app)
+bootstrap = Bootstrap(app)
 
 
         

@@ -56,3 +56,6 @@ Flask framework
    python hello.py runserver -h 0.0.0.0
    http://192.168.0.107:5000/
    http://192.168.0.107:5000/user/zhang3f
+7. tag 3b
+   use bootstrap template
+   http://192.168.0.107:5000/user/zhang3f
