@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 from flask import g
 from flask import make_response
@@ -17,11 +17,7 @@ def helloworld():
 
 @app.route('/')
 def index():
-    first_line = '<h1>hello !</h1>'
-    user_agent = request.headers.get('User-Agent')
-    #print('request header %s' % request.headers)
-    content = first_line + user_agent
-    return content
+    return render_template('index.html')
 
 
 
@@ -45,9 +41,7 @@ def indexabort():
     abort(404)
 @app.route('/user/<name>')
 def user(name):
-    g.username = name
-    print("get g username %s: " % g.username)
-    return '<h1> hello %s' % name
+    return render_template('user.html',name=name)
 
 def index_with_url():
     return '<h1> This is bined by add_url_rule'

@@ -51,4 +51,8 @@ Flask framework
       >>> from hello import app
       >>> from hello import manager
 
-
+6. tag 3a
+   render_template
+   python hello.py runserver -h 0.0.0.0
+   http://192.168.0.107:5000/
+   http://192.168.0.107:5000/user/zhang3f
