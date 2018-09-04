@@ -4,8 +4,10 @@ from flask import g
 from flask import make_response
 from flask import redirect
 from flask import abort
+from flask_script import Manager
 
 app = Flask(__name__)
+manager = Manager(app)
 
 
         
@@ -54,6 +56,7 @@ app.add_url_rule('/index_with_url/', 'index_with_url', index_with_url)
 
 
 if __name__ == '__main__':
-    app.run(debug=True,threaded=True)
+    #app.run(debug=True,threaded=True)
+    manager.run()
 
 

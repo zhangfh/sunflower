@@ -43,5 +43,12 @@ Flask framework
       see redirectbaidu
    5) abort
       see makeabort
+5. tag 2e
+   flask-script
+   1) python hello.py runserver
+   2) python hello.py runserver -h 0.0.0.0  (allow any computer access your web server)
+   3) python hello.py shell
+      >>> from hello import app
+      >>> from hello import manager
 
 
