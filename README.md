@@ -26,3 +26,22 @@ Flask framework
    >>>from hello import app
    >>>app.url_map
 
+4. tag : 2d
+   1) g 处理请求时用作临时存储的对象，每次请求都会重设这个变量
+   127.0.0.1:5000/user/123
+   2) hook
+      before_first_request
+      before_request
+      after_request
+      teardown_request
+      see sample code: helloword(hello.py)
+
+   3) response
+      400 request invalid (see indexerror)
+      make_response(see makeresponse)
+   4) redirect
+      see redirectbaidu
+   5) abort
+      see makeabort
+
+
