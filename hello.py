@@ -1,10 +1,15 @@
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<h1>hello !</h1>'
+    first_line = '<h1>hello !</h1>'
+    user_agent = request.headers.get('User-Agent')
+    #print('request header %s' % request.headers)
+    content = first_line + user_agent
+    return content
 
 @app.route('/user/<name>')
 def user(name):
