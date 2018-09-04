@@ -15,6 +15,11 @@ def index():
 def user(name):
     return '<h1> hello %s' % name
 
+def index_with_url():
+    return '<h1> This is bined by add_url_rule'
+
+app.add_url_rule('/index_with_url/', 'index_with_url', index_with_url)
+
 if __name__ == '__main__':
     app.run(debug=True,threaded=True)
 
