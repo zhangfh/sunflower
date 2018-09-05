@@ -59,3 +59,10 @@ Flask framework
 7. tag 3b
    use bootstrap template
    http://192.168.0.107:5000/user/zhang3f
+8. tag 3e
+   use own javascript file
+9. tag 3f
+   template/base.html  base template
+   template/user.html  use base.html as parent template
+   template/404.html , template/500.html as errorhandler
+
