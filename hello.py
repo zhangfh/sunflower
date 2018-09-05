@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for,flash
 from flask import request
 from flask import g
 from flask import make_response
@@ -92,6 +92,17 @@ def getform2():
         return redirect(url_for('getform2'))
     return render_template('form.html',form=form,name=session.get('name'))
 
+@app.route('/getform3',methods=['GET','POST'])
+#version 3
+def getform3():
+    form = NameForm()
+    if form.validate_on_submit():
+        old_name = session.get('name')
+        if old_name is not None and old_name != form.name.data:
+           flash('Looks like you have changed your name!')
+        session['name'] = form.name.data
+        return redirect(url_for('getform3'))
+    return render_template('form.html',form=form,name=session.get('name'))
 if __name__ == '__main__':
     #app.run(debug=True,threaded=True)
     manager.run()

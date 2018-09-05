@@ -77,4 +77,6 @@ Flask framework
     use form    127.0.0.1:5000/getform
 14. tag 4b
     form(post--redirect--get) 127.0.0.1:5000/getform2
+15. tag 4c
+    flash 127.0.0.1:5000/getform3
 
