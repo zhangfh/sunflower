@@ -29,3 +29,7 @@
     </div>
 </div>
 {% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src={{url_for('static',filename='js/my-script.js')}}></script>
+{% endblock %}
