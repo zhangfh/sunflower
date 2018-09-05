@@ -56,6 +56,10 @@ def index_with_url():
 
 app.add_url_rule('/index_with_url/', 'index_with_url', index_with_url)
 
+@app.route('/link')
+def get_link():
+    return render_template('link.html')
+
 
 if __name__ == '__main__':
     #app.run(debug=True,threaded=True)
