@@ -66,11 +66,15 @@ Flask framework
    template/user.html  use base.html as parent template
    template/404.html , template/500.html as errorhandler
 10. tag 3g
-   url_for      127.0.0.15000/link
+   url_for      127.0.0.1:5000/link
 11. tag 3h
     static for favicon
 12. tag 3i
     use datetime to get time
     use moment to format time in browser
     index.html(base.html include moment.js)
+13. tag 4a
+    use form    127.0.0.1:5000/getform
+14. tag 4b
+    form(post--redirect--get) 127.0.0.1:5000/getform2
 

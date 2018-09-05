@@ -1,8 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, url_for
 from flask import request
 from flask import g
 from flask import make_response
-from flask import redirect
 from flask import abort
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
@@ -84,6 +83,14 @@ def getform():
         form.name.data = ''
     return render_template('form.html',form=form,name=name)
 
+@app.route('/getform2',methods=['GET','POST'])
+#version 2
+def getform2():
+    form = NameForm()
+    if form.validate_on_submit():
+        session['name'] = form.name.data
+        return redirect(url_for('getform2'))
+    return render_template('form.html',form=form,name=session.get('name'))
 
 if __name__ == '__main__':
     #app.run(debug=True,threaded=True)
