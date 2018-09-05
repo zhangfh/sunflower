@@ -80,3 +80,20 @@ Flask framework
 15. tag 4c
     flash 127.0.0.1:5000/getform3
 
+16. tag 5a
+    1). export FLASK_MYSQL_PASSWORD in venv/bin/activate
+    2). set mysql uri
+    3). mysql database: sunflower
+	CREATE DATABASE IF NOT EXISTS sunflower DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+    4). pip install mysql-python 
+    
+    5) use python shell
+       >>> from hello import db
+       >>> db.create_all()
+       use mysql to view:
+       mysql >> use sunflower
+       mysql >> show tables;
+       mysql >> desc users;
+
+    6) use mysql in view  127.0.0.1:5000/getform4
+
