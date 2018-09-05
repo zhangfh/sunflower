@@ -13,6 +13,7 @@ from wtforms.validators import Required
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Shell
+from flask_migrate import Migrate,MigrateCommand
 
 
 app = Flask(__name__)
@@ -27,6 +28,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = mysql_url
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 
 db = SQLAlchemy(app)
+migreate = Migrate(app,db)
 
 
 class NameForm(Form):
@@ -151,7 +153,7 @@ def make_shell_context():
     return dict(app=app,db=db,User=User,Role=Role)
 
 manager.add_command("shell",Shell(make_context=make_shell_context))
-
+manager.add_command('db',MigrateCommand)
 if __name__ == '__main__':
     #app.run(debug=True,threaded=True)
     manager.run()

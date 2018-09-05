@@ -98,4 +98,9 @@ Flask framework
     6) use mysql in view  127.0.0.1:5000/getform4
 17. tag 5b
     import shell for convinence
+18. tag 5c
+    migration shell command
+    >>> python hello.py db init
+    >>> python hello.py db migrate -m "initial migration"
+    >>> python hello.py db upgrade
 
