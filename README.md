@@ -67,4 +67,6 @@ Flask framework
    template/404.html , template/500.html as errorhandler
 10. tag 3g
    url_for      127.0.0.15000/link
+11. tag 3h
+    static for favicon
 
