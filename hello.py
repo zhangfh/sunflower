@@ -8,6 +8,9 @@ from flask_script import Manager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
+from flask_wtf import Form
+from wtforms import StringField,SubmitField
+from wtforms.validators import Required
 
 
 app = Flask(__name__)
@@ -16,8 +19,12 @@ bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 
+app.config['SECRET_KEY'] = 'wSR03'
 
 
+class NameForm(Form):
+    name = StringField('What is your name?', validators=[Required()])
+    submit = SubmitField('Submit')
         
 @app.before_request
 def helloworld():
@@ -66,6 +73,16 @@ app.add_url_rule('/index_with_url/', 'index_with_url', index_with_url)
 @app.route('/link')
 def get_link():
     return render_template('link.html')
+
+@app.route('/getform',methods=['GET','POST'])
+#version 1
+def getform():
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+    return render_template('form.html',form=form,name=name)
 
 
 if __name__ == '__main__':
