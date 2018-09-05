@@ -96,4 +96,6 @@ Flask framework
        mysql >> desc users;
 
     6) use mysql in view  127.0.0.1:5000/getform4
+17. tag 5b
+    import shell for convinence
 

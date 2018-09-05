@@ -12,6 +12,7 @@ from wtforms import StringField,SubmitField
 from wtforms.validators import Required
 import os
 from flask_sqlalchemy import SQLAlchemy
+from flask_script import Shell
 
 
 app = Flask(__name__)
@@ -146,6 +147,10 @@ def getform4():
 
     return render_template('form4.html',form = form, name = session.get('name'), known = session.get('known', False))
 
+def make_shell_context():
+    return dict(app=app,db=db,User=User,Role=Role)
+
+manager.add_command("shell",Shell(make_context=make_shell_context))
 
 if __name__ == '__main__':
     #app.run(debug=True,threaded=True)
