@@ -69,4 +69,8 @@ Flask framework
    url_for      127.0.0.15000/link
 11. tag 3h
     static for favicon
+12. tag 3i
+    use datetime to get time
+    use moment to format time in browser
+    index.html(base.html include moment.js)
 

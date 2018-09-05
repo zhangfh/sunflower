@@ -6,10 +6,16 @@ from flask import redirect
 from flask import abort
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+from datetime import datetime
+
 
 app = Flask(__name__)
 manager = Manager(app)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
+
+
 
 
         
@@ -27,7 +33,8 @@ def internal_server_error(e):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    datetime_now = datetime.utcnow()
+    return render_template('index.html', current_time=datetime_now)
 
 @app.route('/indexerror')
 def indexerror():
