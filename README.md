@@ -118,4 +118,31 @@ Flask framework
 	>>> with app.app_context():
 	...     mail.send(msg)
     3) send email with template both sync and async
+20. tag 7a
+    1) tree -I 'venv|migrations|*.pyc' 
+	.
+	├── app
+	│   ├── email.py
+	│   ├── __init__.py
+	│   ├── main
+	│   │   ├── errors.py
+	│   │   ├── forms.py
+	│   │   ├── __init__.py
+	│   │   └── views.py
+	│   ├── models.py
+	│   ├── static
+	│   │   └── favicon.ico
+	│   └── templates
+	│       ├── 404.html
+	│       ├── 500.html
+	│       ├── base.html
+	│       ├── index.html
+	│       └── mail
+	│           ├── new_user.html
+	│           └── new_user.txt
+	├── config.py
+	├── manage.py
+	├── README.md
+	└── requirements.txt
+
 
