@@ -104,3 +104,18 @@ Flask framework
     >>> python hello.py db migrate -m "initial migration"
     >>> python hello.py db upgrade
 
+19. tag 6a 
+    1) add config in venv/bin/activate
+       FLASK_MAIL_USERNAME
+       FLASK_MAIL_PASSWORD
+       FLASK_MAIL_SENDER
+    2) use python to send email
+	>>> from flask_mail import Message
+	>>> from hello import mail
+	>>> msg = Message('test subject today', sender='xxx@163.com',recipients=['xxx@163.com'])
+	>>> msg.body = 'text body'
+	>>> msg.html = '<b>This is from python Shell</b>'
+	>>> with app.app_context():
+	...     mail.send(msg)
+    3) send email with template both sync and async
+

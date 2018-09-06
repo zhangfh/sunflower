@@ -14,7 +14,8 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Shell
 from flask_migrate import Migrate,MigrateCommand
-
+from flask_mail import Mail
+from threading import Thread
 
 app = Flask(__name__)
 manager = Manager(app)
@@ -26,9 +27,17 @@ mysql_url = 'mysql://root:' + mysql_password + '@localhost/sunflower'
 app.config['SECRET_KEY'] = 'wSR03'
 app.config['SQLALCHEMY_DATABASE_URI'] = mysql_url
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+app.config['MAIL_SERVER'] = 'smtp.163.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('FLASK_MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('FLASK_MAIL_PASSWORD')
+app.config['FLASKY_MAIL_SUBJECT_PREFIX'] ='[Register]'
+app.config['FLASKY_MAIL_SENDER'] = os.environ.get('FLASK_MAIL_SENDER')
 
 db = SQLAlchemy(app)
 migreate = Migrate(app,db)
+mail = Mail(app)
 
 
 class NameForm(Form):
@@ -151,6 +160,28 @@ def getform4():
 
 def make_shell_context():
     return dict(app=app,db=db,User=User,Role=Role)
+
+
+def send_email(to,subject,template,**kwargs):
+    msg = Message(app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + subject, sender = app.config['FLASKY_MAIL_SENDER'], recipients=[to])
+    with app.app_context():
+        msg.body = render_template(template + '.txt', **kwargs)
+        msg.html = render_template(template + '.html', **kwargs)
+        mail.send(msg)
+
+def send_async_email(app,msg):
+    with app.app_context():
+        mail.send(msg)
+
+
+def send_email_async(to,subject,template,**kwargs):
+    msg = Message(app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + subject, sender = app.config['FLASKY_MAIL_SENDER'], recipients=[to])
+    with app.app_context():
+        msg.body = render_template(template + '.txt', **kwargs)
+        msg.html = render_template(template + '.html', **kwargs)
+    thr = Thread(target=send_async_email, args=[app,msg])
+    thr.start()
+    return thr
 
 manager.add_command("shell",Shell(make_context=make_shell_context))
 manager.add_command('db',MigrateCommand)
