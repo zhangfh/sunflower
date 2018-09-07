@@ -152,3 +152,8 @@ Flask framework
     test/__init__.py test/test_basics.py  test/test_user_model.py
 22. tag 8b
     auth blueprint and route: http://192.168.0.107:5000/auth/login
+23. tag 8c
+    login
+    #python manage.py  db migrate -m "v0.3"
+    #python manage.py db upgrade
+    email : john@163.com password: cat 
