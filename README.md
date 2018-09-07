@@ -150,3 +150,5 @@ Flask framework
     unit test
     python manage.py test
     test/__init__.py test/test_basics.py  test/test_user_model.py
+22. tag 8b
+    auth blueprint and route: http://192.168.0.107:5000/auth/login
