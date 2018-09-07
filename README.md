@@ -146,3 +146,7 @@ Flask framework
 	└── requirements.txt
 
 
+21. tag 8a
+    unit test
+    python manage.py test
+    test/__init__.py test/test_basics.py  test/test_user_model.py
