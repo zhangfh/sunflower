@@ -157,3 +157,9 @@ Flask framework
     #python manage.py  db migrate -m "v0.3"
     #python manage.py db upgrade
     email : john@163.com password: cat 
+24. tag 8d
+    register
+
+25. tag 8e 
+    cofirm
+
