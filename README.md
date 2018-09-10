@@ -164,4 +164,5 @@ Flask framework
     cofirm
 26. tag 8f
     change password
-
+27. tag 8g
+    reset password
