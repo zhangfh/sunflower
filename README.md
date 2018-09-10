@@ -169,4 +169,5 @@ Flask framework
 28. tag 9a
     Role
     decorate
-
+29. tag 10a
+    User resource
