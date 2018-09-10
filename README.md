@@ -162,4 +162,6 @@ Flask framework
 
 25. tag 8e 
     cofirm
+26. tag 8f
+    change password
 
